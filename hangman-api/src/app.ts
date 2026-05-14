@@ -14,3 +14,4 @@ initServer();
 //Comentario npm run test
 //Comentario needs: build
 //Comentario para break Unit Test (arreglar ci.yaml)
+//Comentario final clase para intefración continua.
