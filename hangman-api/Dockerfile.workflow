@@ -1,9 +1,9 @@
-FROM node: lts-alpine as app
+FROM node:lts-alpine as app
 
 WORKDIR /app
-COPY dist/ .
+COPY dist .
 COPY package.json .
-COPY package-lock .
+COPY package-lock.json. dest
 
 ENV NODE_ENV=production
 
