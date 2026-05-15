@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ inputs.node-version }}
-      -name: Build
+      - name: Build
         working-directory: ${{ inputs.working-directory }}
         run: |
           npm ci
