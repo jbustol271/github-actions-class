@@ -22,5 +22,5 @@ jobs:
         with:
           context: ./hangman-api
           push: true
-          tags: jtrillo/hangman-api-cep-grupo-a:latest
+          tags: erkapitan/hangman-api-cep-grupo-a:latest
           file: ./hangman-api/Dockerfile
