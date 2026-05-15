@@ -20,7 +20,7 @@ jobs:
       - name: Build and push Docker Image
         uses: docker/build-push-action@v7
         with:
-          context: ./hagman-api
+          context: ./hangman-api
           push: true
           tags: jtrillo/hangman-api-cep-grupo-a:latest
           file: ./hagman-api/Dockerfile
