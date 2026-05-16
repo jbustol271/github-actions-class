@@ -1,4 +1,4 @@
-name: Despliegue Continuo (docker actions)
+name: Frontend Despliegue Continuo (docker actions)
 
 on:
   workflow_dispatch:
@@ -20,7 +20,7 @@ jobs:
       - name: Build and push Docker Image
         uses: docker/build-push-action@v7
         with:
-          context: ./hangman-api
+          context: ./hangman-front
           push: true
-          tags: erkapitan/hangman-api-cep-grupo-a:latest
-          file: ./hangman-api/Dockerfile
+          tags: erkapitan/hangman-front-cep-grupo-a:latest
+          file: ./hangman-front/Dockerfile
