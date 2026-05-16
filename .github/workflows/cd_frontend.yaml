@@ -1,4 +1,4 @@
-name: Frontend Despliegue continuo (1)
+name: Frontend Despliegue continuo
 
 on:
   workflow_dispatch:
