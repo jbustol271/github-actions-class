@@ -1,4 +1,4 @@
-name: Frontend Despliegue Continuo (docker actions)
+name: Frontend Despliegue Continuo (docker actions) - cd_frontend_with_actions.yaml
 
 on:
   workflow_dispatch:
@@ -22,5 +22,5 @@ jobs:
         with:
           context: ./hangman-front
           push: true
-          tags: erkapitan/hangman-front-cep-grupo-a:latest
+          tags: erkapitan/hangman-front-cep-grupo-a-cd_frontend_with_actions:latest
           file: ./hangman-front/Dockerfile

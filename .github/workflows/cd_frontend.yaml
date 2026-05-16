@@ -1,4 +1,4 @@
-name: Frontend Despliegue continuo
+name: Frontend Despliegue continuo - cd_frontend.yaml
 
 on:
   workflow_dispatch:
@@ -39,7 +39,7 @@ jobs:
           path: hangman-front/dist
       - name: Build docker image
         working-directory: ./hangman-front
-        run: docker build -t erkapitan/hangman-front -f Dockerfile.workflow .
+        run: docker build -t erkapitan/hangman-front-cd_frontend -f Dockerfile.workflow .
 
 
   
