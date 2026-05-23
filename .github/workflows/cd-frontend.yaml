@@ -1,4 +1,4 @@
-name: Despliegue Continuo GHCR (v0 cd-frontend.yaml)
+name: Despliegue Continuo GHCR (v1 cd-frontend.yaml)
 
 on:
   workflow_dispatch:
