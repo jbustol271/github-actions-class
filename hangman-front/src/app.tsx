@@ -5,5 +5,4 @@ export const App: React.FunctionComponent = () => {
   return <StartGameComponent />;
 };
 
-//Comentario para forzar el cambio y la ejecución del actions.
-//Estropicio
+// Frontend Integración continua (v0)
