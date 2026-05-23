@@ -5,4 +5,4 @@ export const App: React.FunctionComponent = () => {
   return <StartGameComponent />;
 };
 
-// Frontend Integración continua (v0)
+// Inicio de laboratorio.
