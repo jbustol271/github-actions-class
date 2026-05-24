@@ -1,4 +1,4 @@
-name: e2e-v1
+name: e2e-v2
 
 on:
   workflow_dispatch:
@@ -18,15 +18,35 @@ jobs:
       - name: Login to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
+      - name: Get latest API tag
+        id: api_tag
+        run: |
+          TAG=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://ghcr.io/v2/jbustol271/hangman-api-cep-grupo-a/tags/list \
+            | jq -r '.tags[]' | head -n 1)
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Get latest FRONTEND tag
+        id: front_tag
+        run: |
+          TAG=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://ghcr.io/v2/jbustol271/hangman-frontend-cep-grupo-a/tags/list \
+            | jq -r '.tags[]' | head -n 1)
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
       - name: Run needed containers
         run: |
+          echo "API TAG: ${{ steps.api_tag.outputs.tag }}"
+          echo "FRONT TAG: ${{ steps.front_tag.outputs.tag }}"
+
           # API
-          docker run -d -p 3001:3000 ghcr.io/jbustol271/hangman-api-cep-grupo-a:latest
+          docker run -d -p 3001:3000 \
+            ghcr.io/jbustol271/hangman-api-cep-grupo-a:${{ steps.api_tag.outputs.tag }}
 
           # FRONTEND
           docker run -d -p 8080:8080 \
             -e API_URL=http://localhost:3001 \
-            ghcr.io/jbustol271/hangman-frontend-cep-grupo-a:latest
+            ghcr.io/jbustol271/hangman-frontend-cep-grupo-a:${{ steps.front_tag.outputs.tag }}
 
       - name: Install dependencies
         run: npm ci
