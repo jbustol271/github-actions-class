@@ -12,8 +12,8 @@ jobs:
         uses: actions/checkout@v6
       - name: Run needed containers
         run: |
-          docker run -d -p 3001:3000 jbustol271/hangman-api
-          docker run -d -p 8080:8080 -e API_URL=http://localhost:3001 jbustol271/hangman-front
+          docker run -d -p 3001:3000 jbustol271/hangman-api-cep-grupo-a
+          docker run -d -p 8080:8080 -e API_URL=http://localhost:3001 jbustol271/hangman-front-cep-grupo-a
       - name: Install dependencies
         run: npm ci
         working-directory: ./hangman-e2e/e2e
