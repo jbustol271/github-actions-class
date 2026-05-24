@@ -21,17 +21,19 @@ jobs:
       - name: Get latest API tag
         id: api_tag
         run: |
-          TAG=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://ghcr.io/v2/jbustol271/hangman-api-cep-grupo-a/tags/list \
-            | jq -r '.tags[]' | head -n 1)
+          TAG=$(curl -s \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/users/jbustol271/packages/container/hangman-api-cep-grupo-a/versions \
+            | jq -r '.[0].metadata.container.tags[0]')
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
       - name: Get latest FRONTEND tag
         id: front_tag
         run: |
-          TAG=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://ghcr.io/v2/jbustol271/hangman-frontend-cep-grupo-a/tags/list \
-            | jq -r '.tags[]' | head -n 1)
+          TAG=$(curl -s \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/users/jbustol271/packages/container/hangman-frontend-cep-grupo-a/versions \
+            | jq -r '.[0].metadata.container.tags[0]')
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
       - name: Run needed containers
